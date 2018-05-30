@@ -1,0 +1,23 @@
+[Default_Movement]
+forwardKey = W
+backKey = S
+leftKey = A
+rightKey = D
+shootKey = SPACE
+powerupKey = ENTER
+
+[Custom_Movement]
+forwardKey = W
+backKey = S
+leftKey = A
+rightKey = D
+shootKey = SPACE
+powerupKey = ENTER
+
+[Movement]
+w_key = keyDown(events.WKEY)
+s_key = keyDown(events.SKEY)
+a_key = keyDown(events.AKEY)
+d_key = keyDown(events.DKEY)
+enter_key = keyDown(events.ENTERKEY)
+space_key = keyDown(events.SPACEKEY)

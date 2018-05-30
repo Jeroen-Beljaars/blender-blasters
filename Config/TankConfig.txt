@@ -1,0 +1,37 @@
+#This is the config file for the Blender Blasters game
+#In here values for the game can be altert
+#To use the values the game needs to be resarted
+
+#The [] sections indicate what section influences what kind of section of the game
+#values can be set to a new value between the given ranges
+#If a incorrect value is used, the default values will be used.
+
+[Powerups]
+#TTL stands for the time a powerup had before it runs out
+#All TTL values can be between 1 and 60
+PartyModeTTL = 5
+ExtraHullTTL = 15
+SpeedBoostTTL = 10
+#These values indicate the change you have as a player of getting a sertain powerup
+#The numbers need to add up to 100. otherwise the default will be used
+PartyModeChance = 25
+ExtraHullChance = 40
+SpeedBoostChance = 35
+
+[TankStats]
+#MovementSpeed can be set between 50 and 450
+MovementSpeed = 100
+#Hitpoints can be set between 1 and 5000
+HitPoints = 50
+#Firepower can be set between 1 and 1000
+FirePower = 25
+
+
+#If these cheats are set to True they will alter how the game works
+[Cheats]
+#Enables the Jumping Powerup
+JumpingPowerUp = False
+#Enables shooting with the partyMode Powerup forever
+PartyModeForEver = False
+#Enable a thick inpenetratable Armour
+TurtleMode = False

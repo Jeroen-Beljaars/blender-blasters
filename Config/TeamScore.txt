@@ -1,0 +1,4 @@
+[Default_Scores]
+Team1 = 0
+Team2 = 0
+
