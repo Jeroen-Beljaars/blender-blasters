@@ -37,20 +37,20 @@ class PacketHandler:
                 if point == 1:
                     euler = [0, 0, 0.1]
                 else:
-                    euler = [0, 0, -3.1232]
+                    euler = [0, 0, -3]
             else:
                 point = randint(3, 4)
-                spawner = scene.objects["Spawner{}".format(randint(3, 4))]
+                spawner = scene.objects["Spawner{}".format(point)]
                 if point == 3:
-                    euler = [0, 0, -3.1232]
+                    euler = [0, 0, -3]
                 else:
                     euler = [0, 0, 0.1]
 
             player = scene.addObject(object, spawner)
+            player.localOrientation = euler
             player["ip"] = ip
             player["team"] = packet['new-connection']['team']
 
-            player.localOrientation = euler
             # Add the ip to the player object
 
             self.client.players[ip] = {}
@@ -61,6 +61,9 @@ class PacketHandler:
             # If it is the first time a user is "intitialized" then we know that this is
             # the user that belongs to this self.client. So we store the object
             if not self.client.user_initialized:
+                logic.globalDict['matches'] = packet['new-connection']['matches']
+                print(packet['new-connection']['matches'])
+                logic.globalDict['current_match'] = 1
                 self.client.local_user = player
                 self.client.local_user['team'] = team
                 # Color all the tanks

@@ -51,6 +51,7 @@ class JoiningLobby(Lobby):
                             logic.globalDict['port'] = response['server_info']['port']
                             scene.replace('Game')
                             break
+            self.active = False
 
 handler = JoiningLobby()
 

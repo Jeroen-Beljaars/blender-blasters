@@ -26,17 +26,26 @@ In here you can set the percentages for the powerup"""
 
 powerUpList = [PartyMode] * (logic.globalDict["PartyModeChance"]) + [ExtraHull] * logic.globalDict["ExtraHullChance"] \
               + [Speedboost] * logic.globalDict["SpeedBoostChance"]
+
+
 def selector():
     """"Here we get te powerup from the list en set it to selectedPowerUp"""
     selectedPowerUp = random.choice(powerUpList)
-    print(selectedPowerUp)
+    logic.globalDict['selectedPowerUp'] = selectedPowerUp
+    print("Activate" + str(selectedPowerUp))
     SelectedPowerUp.selected = selectedPowerUp
     selectedPowerUp.activate()
 
 
-
 def deactivate():
-    print("Deactivate")
+    cont = logic.getCurrentController()
+    own = cont.owner
+    if own.sensors['barCheck'].positive:
+        selectedPowerUp = SelectedPowerUp.selected
+        print("Deactivate" + str(selectedPowerUp))
+        selectedPowerUp.deactivate()
+
+def OverideDeactivate():
     selectedPowerUp = SelectedPowerUp.selected
-    print(selectedPowerUp)
+    print("Deactivate" + str(selectedPowerUp))
     selectedPowerUp.deactivate()

@@ -29,6 +29,7 @@ class Client:
         """" Initialize the client """
 
         self.packet_handler = None
+        logic.globalDict['TestMode'] = False
 
         # The color of the enemy
         self.enemy_color = [0.5, 0, 0, 0.2]
@@ -179,10 +180,10 @@ class Client:
     def respawn(self):
         # get the controller
         controller = logic.getCurrentController()
-
         # get object that controller is attached to
         obj = controller.owner
         scene = logic.getCurrentScene()
+        gameScene = logic.getSceneList()[0]
         for key in self.players.keys():
             if self.players[key]['instance'] == obj:
                 team = self.players[key]['team']
@@ -204,9 +205,22 @@ class Client:
         obj.worldPosition = spawner.worldPosition
         obj.localOrientation = euler
 
+    def getPlayers(self):
+        testMode = logic.globalDict['TestMode']
+        if not testMode:
+            logic.globalDict['numOfPlayers'] = len(self.players)
+            if len(self.players) >= 2:
+                hud = logic.getSceneList()[-1]
+                Waiting = hud.objects['Waiting']
+                Waiting['visible'] = False
+        else:
+            logic.globalDict['numOfPlayers'] = 20
+            hud = logic.getSceneList()[-1]
+            Waiting = hud.objects['Waiting']
+            Waiting['visible'] = False
+
 
 if network_config['server_manager']:
-
     client = Client(logic.globalDict['ip'], logic.globalDict['port'])
 
 else:
@@ -255,3 +269,7 @@ def contShoot():
 
     if sh.positive and 2 in btns:
         client.cshoot()
+
+
+def numOfPlay():
+    client.getPlayers()

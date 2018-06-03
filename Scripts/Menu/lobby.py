@@ -11,8 +11,9 @@ with open(getcwd() + "\\Scripts\\Network\\network_config.json") as file:
 
 class Lobby:
     def __init__(self, name):
-        scene = logic.getCurrentScene()
-        self.message = scene.objects['message_{}'.format(name)]
+        self.name = name
+        self.message = ""
+        self.refresh_message()
 
         self.manager_ip = network_config['manager_ip']
         self.manager_port = 9998
@@ -28,6 +29,7 @@ class Lobby:
 
     def connect(self):
         try:
+            self.refresh_message()
             self.manager = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.manager.connect((self.manager_ip, self.manager_port))
             self.manager.settimeout(5)
@@ -37,3 +39,7 @@ class Lobby:
                                 "Please try again later"
             self.message.color = [255, 0, 0, 1]
             return False
+
+    def refresh_message(self):
+        scene = logic.getCurrentScene()
+        self.message = scene.objects['message_{}'.format(self.name)]

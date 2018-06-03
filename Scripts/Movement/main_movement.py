@@ -15,9 +15,11 @@ def keyDown(key_code=events.WKEY, status=logic.KX_INPUT_ACTIVE):
 class Movement():
 
     def PlayerMovement(self):
+
         try:
             cont = logic.getCurrentController()
             own = cont.owner
+            players = bge.logic.globalDict['numOfPlayers']
             try:
                 player = logic.globalDict['local_user']
                 forwardMovement = player['MovementSpeed']
@@ -31,26 +33,26 @@ class Movement():
                 left = keyDown(key_bindings['left'])
                 right = keyDown(key_bindings['right'])
                 powerup = keyDown(key_bindings['powerup'])
+                if players >= 2:
+                    if forward:
+                        player.applyMovement((forwardMovement, 0, 0), True)
 
-                if forward:
-                    player.applyMovement((forwardMovement, 0, 0), True)
+                    elif backward:
+                        player.applyMovement((-forwardMovement, 0, 0), True)
 
-                elif backward:
-                    player.applyMovement((-forwardMovement, 0, 0), True)
-
-                if left:
-                    player.applyRotation((0, 0, 0.05), False)
-                elif right:
-                    player.applyRotation((0, 0, -0.05), False)
-                if powerup and logic.globalDict['JumpingPowerUp'] is True:
-                    print("ENTER KEY")
-                    bge.types.KX_CharacterWrapper.jump(bge.constraints.getCharacter(player))
+                    if left:
+                        player.applyRotation((0, 0, 0.05), False)
+                    elif right:
+                        player.applyRotation((0, 0, -0.05), False)
+                    if powerup and logic.globalDict['JumpingPowerUp'] is True:
+                        print("ENTER KEY")
+                        bge.types.KX_CharacterWrapper.jump(bge.constraints.getCharacter(player))
         except:
             print("No active player found")
 
 
-
 movement = Movement()
+
 
 def move():
     movement.PlayerMovement()

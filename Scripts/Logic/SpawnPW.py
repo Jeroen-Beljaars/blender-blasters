@@ -7,8 +7,9 @@ def spawn():
     own = cont.owner
     scene = logic.getCurrentScene()
     col = own.sensors['Reset']
+    players = logic.globalDict['numOfPlayers']
 
-    if own['Spawn'] is False:
+    if own['Spawn'] is False and players >= 2:
         try:
             rng = logic.globalDict['RandomNumber']
             if rng == own['RN']:
@@ -17,6 +18,7 @@ def spawn():
                 print(own['Spawn'])
         except KeyError:
             pass
+
 
 def reset():
     cont = logic.getCurrentController()

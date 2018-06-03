@@ -65,6 +65,10 @@ class KeyBind:
         self.message = None
 
     def detect(self):
+        """"
+        Select the right option that needs to be binded.
+        And change the keybinding for that option
+        """
         cont = logic.getCurrentController()
         own = cont.owner
 
@@ -76,6 +80,7 @@ class KeyBind:
                             try:
                                 self.bind_properties[key]['field'].text = self.key_map[event[0]]
                                 self.bind_properties[key]['value'] = event[0]
+                                self.message.text = ""
                             except KeyError:
                                 pass
                         else:
@@ -83,6 +88,7 @@ class KeyBind:
                             self.message.color = [1, 0, 0, 1]
 
     def save(self):
+        """" Save the keybindings """
         logic.globalDict['key_binding'] = {
             key: value['value'] for (key, value) in self.bind_properties.items()
         }
@@ -90,10 +96,12 @@ class KeyBind:
         self.message.color = [0, 1, 0, 1]
 
     def load_default(self):
+        """" Initialize the current bindings """
         scene = logic.getCurrentScene()
+        self.message = scene.objects['bind_message']
+
         for key, value in self.bind_properties.items():
             value['field'] = scene.objects[key]
-        self.message = scene.objects['bind_message']
 
         if 'key_bind' in logic.globalDict.keys():
             for key, value in logic.globalDict.items():

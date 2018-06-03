@@ -10,5 +10,9 @@ def detector():
         if bls.hitObject['team'] != own['team']:
             if own['Hitpoints'] <= 0:
                 client.respawn()
+                own['Hitpoints'] = bge.logic.globalDict['HitPoints']
             else:
                 own['Hitpoints'] -= own['Power']
+                if own['Hitpoints'] <= 0:
+                    client.respawn()
+                    own['Hitpoints'] = bge.logic.globalDict['HitPoints']
