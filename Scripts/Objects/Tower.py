@@ -58,6 +58,11 @@ class Tower:
                 Hud.reset_bars()
                 Hud.updateTOneBar()
                 Hud.updateTTwoBar()
+                logic.globalDict['current_match'] += 1
+                print("-----------------------------------------------------------")
+                print(logic.globalDict['current_match'])
+                print(logic.globalDict['matches'])
+                print("-----------------------------------------------------------")
                 if logic.globalDict['current_match'] >= logic.globalDict['matches']:
                     if int(hud.objects['team2_score'].text) > int(hud.objects['team1_score'].text):
                         logic.globalDict['winner'] = "2"

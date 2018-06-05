@@ -18,8 +18,8 @@ if not 'key_binding' in logic.globalDict.keys():
                                        'powerup': 13}
 
 # powerups
-PartyModeTTL = 5
-ExtraHullTTL = 15
+PartyModeTTL = 2
+ExtraHullTTL = 2
 SpeedBoostTTL = 10
 PartyModeChance = 25
 ExtraHullChance = 40

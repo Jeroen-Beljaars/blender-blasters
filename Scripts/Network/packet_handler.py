@@ -63,7 +63,7 @@ class PacketHandler:
             if not self.client.user_initialized:
                 logic.globalDict['matches'] = packet['new-connection']['matches']
                 print(packet['new-connection']['matches'])
-                logic.globalDict['current_match'] = 1
+                logic.globalDict['current_match'] = 0
                 self.client.local_user = player
                 self.client.local_user['team'] = team
                 # Color all the tanks

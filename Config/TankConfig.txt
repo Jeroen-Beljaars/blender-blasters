@@ -9,8 +9,8 @@
 [Powerups]
 #TTL stands for the time a powerup had before it runs out
 #All TTL values can be between 1 and 60
-PartyModeTTL = 5
-ExtraHullTTL = 15
+PartyModeTTL = 2
+ExtraHullTTL = 2
 SpeedBoostTTL = 10
 #These values indicate the change you have as a player of getting a sertain powerup
 #The numbers need to add up to 100. otherwise the default will be used
