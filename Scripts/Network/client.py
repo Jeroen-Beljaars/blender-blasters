@@ -222,7 +222,6 @@ class Client:
 
 if network_config['server_manager']:
     client = Client(logic.globalDict['ip'], logic.globalDict['port'])
-
 else:
     if __name__ == "client":
         logic.globalDict['host'] = False

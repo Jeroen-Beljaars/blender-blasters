@@ -45,6 +45,7 @@ class JoiningLobby(Lobby):
                 elif 'server_info' in response.keys():
                     logic.globalDict['host'] = False
                     logic.globalDict['dns'] = dns
+                    logic.globalDict['init'] = False
                     for scene in logic.getSceneList():
                         if scene.name == 'JoinScene':
                             logic.globalDict['ip'] = response['server_info']['ip']

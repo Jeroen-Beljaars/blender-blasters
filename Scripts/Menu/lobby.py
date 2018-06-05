@@ -28,8 +28,8 @@ class Lobby:
         self.port = ""
 
     def connect(self):
+        self.refresh_message()
         try:
-            self.refresh_message()
             self.manager = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.manager.connect((self.manager_ip, self.manager_port))
             self.manager.settimeout(5)

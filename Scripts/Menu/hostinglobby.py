@@ -58,6 +58,7 @@ class HostingLobby(Lobby):
                         logic.globalDict['host'] = True
                         self.ip = packet['ip']
                         self.port = int(packet['port'])
+                        self.connected = False
                         for scene in logic.getSceneList():
                             if scene.name == 'HostScene':
                                 logic.globalDict['ip'] = self.ip
@@ -71,6 +72,7 @@ class HostingLobby(Lobby):
         self.host_clicked = False
 
     def key_press(self):
+        logic.globalDict['init'] = False
         scene = logic.getCurrentScene()
         output = scene.objects['number_of_matches']
         cont = logic.getCurrentController()
