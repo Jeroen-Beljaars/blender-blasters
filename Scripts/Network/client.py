@@ -214,11 +214,13 @@ class Client:
                 Waiting = hud.objects['Waiting']
                 Waiting['visible'] = False
         else:
-            logic.globalDict['numOfPlayers'] = 20
-            hud = logic.getSceneList()[-1]
-            Waiting = hud.objects['Waiting']
-            Waiting['visible'] = False
-
+            try:
+                logic.globalDict['numOfPlayers'] = 20
+                hud = logic.getSceneList()[-1]
+                Waiting = hud.objects['Waiting']
+                Waiting['visible'] = False
+            except KeyError:
+                pass
 
 if network_config['server_manager']:
     client = Client(logic.globalDict['ip'], logic.globalDict['port'])
