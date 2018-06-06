@@ -4,7 +4,6 @@ from Objects.Controller import JoyStick
 class ControllerMovement(JoyStick.Joystick):
 
     def movement(self):
-        print("test")
         try:
             player = bge.logic.globalDict['local_user']
             players = bge.logic.globalDict['numOfPlayers']

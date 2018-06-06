@@ -15,7 +15,6 @@ class HostingLobby(Lobby):
             154: '7', 155: '9'
         }
         self.host_clicked = False
-        self.amout_of_rounds = 3
 
     def handler(self):
         if not self.host_clicked:
@@ -28,7 +27,7 @@ class HostingLobby(Lobby):
                     if matches % 2 == 0:
                         matches += 1
                 except:
-                    matches = 3
+                    matches = 1
 
                 self.host_clicked = True
                 host_server = {
